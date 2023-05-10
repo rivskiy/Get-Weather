@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center">
+  <div class="row-span-full flex flex-col items-center justify-center bg-block">
     <div class="text-6xl">{{ weatherInfo?.name}}</div>
     <div class="text-2xl">{{ weatherInfo?.weather[0].description}}</div>
     <div class="text-8xl">{{ weatherInfo?.main.temp.toFixed()}}˚</div>

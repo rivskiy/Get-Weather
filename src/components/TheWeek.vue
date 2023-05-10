@@ -1,31 +1,26 @@
 <template>
-  <div class="w-full flex justify-between border border-black">
+  <div class=" p-8 flex items-center justify-between bg-block">
     <ul
-      class="flex flex-col items-center gap-y-4 border border-black"
+      class="flex flex-col items-center gap-y-4"
       v-for="(item, index) in weatherList?.list"
       :key="index"
     >
       <li class="text-xl">{{ convertTime(item.dt) }} ч</li>
       <li :class="`icon__${item.weather[0].icon}`"></li>
       <li class="text-3xl">{{ item.main.temp.toFixed() }}˚</li>
-      <li>{{ item.weather[0].icon }}</li>
     </ul>
   </div>
 </template>
 
 <script setup>
+import { convertTime } from '@/utils';
+
 const props = defineProps({
   weatherList: {
     type: [Object, null],
     required: true,
   },
 })
-
-function convertTime(dateTime) {
-  const date = new Date(dateTime * 1000)
-  const hours = date.getHours()
-  return hours
-}
 </script>
 
 <style>
@@ -47,9 +42,9 @@ function convertTime(dateTime) {
 .icon__13n,
 .icon__50d,
 .icon__50n {
-  width: 50px;
-  height: 50px;
-  background-size: 50px;
+  width: 80px;
+  height: 80px;
+  background-size: 80px;
   background-repeat: no-repeat;
 }
 .icon__01d,
