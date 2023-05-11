@@ -7,3 +7,23 @@
 .bg-block {
   @apply bg-white bg-opacity-20 backdrop-blur-lg rounded-3xl drop-shadow-lg;
 }
+
+.icon-size {
+  @apply w-10 h-10 sm:w-20 sm:h-20 xl:w-10 xl:h-10 2xl:w-20 2xl:h-20 bg-contain bg-no-repeat
+}
+
+.current-item {
+  @apply p-4 md:p-8 flex flex-col justify-around bg-block
+}
+.current-text {
+  @apply text-sm sm:text-base lg:text-xl
+}
+
+@layer components {
+  .main-bg-day {
+    background: linear-gradient(360deg, #3594BF 0%, rgba(255, 255, 255, 0) 100%), #53A6CB;
+  }
+  .main-bg-night {
+    background: linear-gradient(360deg, #55707E 0%, rgba(255, 255, 255, 0) 100%), #042232;
+  }
+}

@@ -1,8 +1,8 @@
 <template>
-  <div class="row-span-full flex flex-col items-center justify-center bg-block">
-    <div class="text-6xl">{{ weatherInfo?.name}}</div>
-    <div class="text-2xl">{{ weatherInfo?.weather[0].description}}</div>
-    <div class="text-8xl">{{ weatherInfo?.main.temp.toFixed()}}˚</div>
+  <div class="xl:row-span-full flex flex-col items-center justify-center bg-block">
+    <div class="xl:mb-4 text-2xl sm:text-4xl xl:text-6xl">{{ weatherInfo?.name}}</div>
+    <div class="mb-4 xl:mb-8">{{ weatherInfo?.weather[0].description}}</div>
+    <div class="text-5xl sm:text-8xl xl:text-8xl">{{ weatherInfo?.main.temp.toFixed()}}˚</div>
   </div>
 </template>
 
@@ -17,6 +17,7 @@ const props = defineProps({
     require: true
   }
 })
+
 </script>
 
 <style>

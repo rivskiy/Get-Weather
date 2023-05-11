@@ -1,13 +1,13 @@
 <template>
-  <div class=" p-8 flex items-center justify-between bg-block">
+  <div class="p-8 flex items-center justify-between text-sm lg:text-base bg-block">
     <ul
       class="flex flex-col items-center gap-y-4"
       v-for="(item, index) in weatherList?.list"
       :key="index"
     >
-      <li class="text-xl">{{ convertTime(item.dt) }} ч</li>
-      <li :class="`icon__${item.weather[0].icon}`"></li>
-      <li class="text-3xl">{{ item.main.temp.toFixed() }}˚</li>
+      <li class="">{{ convertTime(item.dt) }}:00</li>
+      <li :class="`icon-size icon__${item.weather[0].icon}`"></li>
+      <li class="">{{ item.main.temp.toFixed() }}˚</li>
     </ul>
   </div>
 </template>
@@ -24,29 +24,6 @@ const props = defineProps({
 </script>
 
 <style>
-.icon__01d,
-.icon__01n,
-.icon__02d,
-.icon__02n,
-.icon__03d,
-.icon__03n,
-.icon__04d,
-.icon__04n,
-.icon__09d,
-.icon__09n,
-.icon__10d,
-.icon__10n,
-.icon__11n,
-.icon__11n,
-.icon__13d,
-.icon__13n,
-.icon__50d,
-.icon__50n {
-  width: 80px;
-  height: 80px;
-  background-size: 80px;
-  background-repeat: no-repeat;
-}
 .icon__01d,
 .icon__01n {
   background-image: url("@/assets/images/01d.png");

@@ -1,19 +1,19 @@
 <template>
   <div
-    class="min-h-screen flex flex-column items-center text-gray-100 font-main bg-gradient-to-b from-sky-500 via-sky-300 via-30% to-sky-500"
+    class="min-h-screen text-xs sm:text-sm lg:text-base text-gray-100 font-main main-bg-day"
   >
     <Loader v-if="loading" />
-    <div class="weather container mx-auto p-20" v-else>
+    <div class="h-screen xl:container mx-auto p-4 sm:p-6 md:p-8 lg:p-8 xl:p-40 flex flex-col " v-else>
       <!-- <Search/> -->
-      <div class="w-1/2 -mb-20 px-8 pr-24 relative z-10 flex">
+      <div class="mb-4 md:mb-6 pr-3 flex  relative">
         <input
-          class="bg-sky-200 text-black rounded-3xl w-full h-10 px-8 text-lg focus:outline-sky-400 z-10 capitalize"
+          class="bg-sky-200 text-black rounded-3xl h-10 w-11/12  px-8 text-lg focus:outline-sky-400 hover:outline hover:outline-sky-500 hover:outline-2  z-10 capitalize"
           type="text"
           v-model="city"
           @keydown.enter="getWeather"
         />
         <button
-          class="absolute right-11 hover:right-10 focus:right-10 w-24 h-10 rounded-3xl bg-sky-500 focus:outline-none transition-all"
+          class="absolute left-[100%] translate-x-[-100%] w-1/3 h-10 pr-2 md:pr-6 rounded-3xl bg-sky-600 focus:outline-none hover:bg-sky-700 transition-all"
           type="button"
           @click="getWeather"
         >
@@ -23,7 +23,7 @@
             viewBox="0 0 24 24"
             stroke-width="1.5"
             stroke="currentColor"
-            class="w-8 h-8 ml-12 stroke-2"
+            class="w-8 h-8 ml-auto stroke-2"
           >
             <path
               stroke-linecap="round"
@@ -34,26 +34,26 @@
           <span class="hidden">Показать погоду</span>
         </button>
       </div>
-      <div v-if="isError">
+      <!-- errop -->
+      <div class="w-full md:w-1/2 p-10 bg-block" v-if="isError">
         <p>Кажется, что то пошло не так, попробуйте снова</p>
       </div>
-      <div class="w-full grid grid-cols-2 grid-rows-2 gap-6" v-else>
-        <City :city="city" :weatherInfo="weatherInfo" />
-        <Week :weatherList="weatherList" />
-        <Current :weatherInfo="weatherInfo" />
+      <div class="h-full grid grid-rows-3 xl:grid-cols-2 xl:grid-rows-2 gap-4 md:gap-6" v-else>
+        <City :city="city" :weatherInfo="weatherInfo"/>
+        <Hours :weatherList="weatherList"/>
+        <Current :weatherInfo="weatherInfo"/>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed, reactive, ref } from "vue";
+import { computed, ref } from "vue";
 import { API_KEY, BASE_URL, LIST_URL } from "@/constants";
 import City from "@/components/TheCity.vue";
-import Week from "@/components/TheWeek.vue";
+import Hours from "@/components/TheHours.vue";
 import Current from "@/components/TheCurrent.vue";
 import Loader from "@/components/UI/TheLoader.vue";
-import { upFirstLatter } from "./utils";
 
 const city = ref("Belgorod");
 const weatherInfo = ref(null);
@@ -64,7 +64,6 @@ function gerWeatherInfo() {
     .then((data) => (weatherInfo.value = data))
     .then(() => (city.value = ""));
 }
-
 const weatherList = ref(null);
 
 function getWeatherList() {
