@@ -3,11 +3,11 @@
     class="min-h-screen text-xs sm:text-sm lg:text-base text-gray-100 font-main main-bg-day"
   >
     <Loader v-if="loading" />
-    <div class="h-screen xl:container mx-auto p-4 sm:p-6 md:p-8 lg:p-8 xl:p-40 flex flex-col " v-else>
+    <div class="h-screen xl:container mx-auto p-4 sm:p-6 md:p-8 lg:p-8 xl:p-40 grid grid-rows-[40px_1fr_1fr_1fr] xl:grid-cols-2 xl:grid-rows-[40px_1fr_1fr] gap-4 md:gap-6">
       <!-- <Search/> -->
-      <div class="mb-4 md:mb-6 pr-3 flex  relative">
+      <div class="col-span-full pr-3 flex bg-block">
         <input
-          class="bg-sky-200 text-black rounded-3xl h-10 w-11/12  px-8 text-lg focus:outline-sky-400 hover:outline hover:outline-sky-500 hover:outline-2  z-10 capitalize"
+          class="bg-sky-200 text-black rounded-3xl h-10 w-11/12 px-8 text-lg focus:outline-sky-400 hover:outline hover:outline-sky-500 hover:outline-2 z-10 capitalize"
           type="text"
           v-model="city"
           @keydown.enter="getWeather"
@@ -34,15 +34,13 @@
           <span class="hidden">Показать погоду</span>
         </button>
       </div>
-      <!-- errop -->
-      <div class="w-full md:w-1/2 p-10 bg-block" v-if="isError">
+      <!-- error -->
+      <div class="w-fit h-10 px-5 pt-2  bg-block" v-if="isError">
         <p>Кажется, что то пошло не так, попробуйте снова</p>
       </div>
-      <div class="h-full grid grid-rows-3 xl:grid-cols-2 xl:grid-rows-2 gap-4 md:gap-6" v-else>
-        <City :city="city" :weatherInfo="weatherInfo"/>
-        <Hours :weatherList="weatherList"/>
-        <Current :weatherInfo="weatherInfo"/>
-      </div>
+      <City :city="city" :weatherInfo="weatherInfo" v-if="!isError"/>
+      <Hours :weatherList="weatherList" v-if="!isError"/>
+      <Current :weatherInfo="weatherInfo" v-if="!isError"/>
     </div>
   </div>
 </template>
