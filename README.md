@@ -1,6 +1,8 @@
 # Weather
-### Приложение погоды на vue и tailwindcss
+
+### Приложение погоды на vue и tailwindcss -> [посмотреть](https://get-weather-1zr4.onrender.com)
 - показывает погоду в настоящее время и на пол дня с шагом в 3 часа
+- composition API
 - адаптив
 
 ---
@@ -20,5 +22,3 @@ npm run serve
 npm run build
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
