@@ -1,6 +1,6 @@
 # Weather
 
-### Приложение погоды на vue и tailwindcss -> [посмотреть](https://get-weather-1zr4.onrender.com)
+### Приложение погоды на vue и tailwindcss -> [посмотреть](https://get-weather-b23j.onrender.com)
 - показывает погоду в настоящее время и на пол дня с шагом в 3 часа
 - composition API
 - адаптив
