@@ -1,9 +1,9 @@
 <template>
   <div
-    class="min-h-screen text-xs sm:text-sm lg:text-base text-gray-100 font-main main-bg-day"
+    class="text-xs sm:text-sm lg:text-base text-gray-100 font-main main-bg-day"
   >
     <Loader v-if="loading" />
-    <div class="h-screen xl:container mx-auto p-4 sm:p-6 md:p-8 lg:p-8 xl:p-40 grid grid-rows-[40px_1fr_1fr_1fr] xl:grid-cols-2 xl:grid-rows-[40px_1fr_1fr] gap-4 md:gap-6">
+    <div class="min-h-screen xl:container mx-auto p-4 sm:p-6 md:p-8 lg:p-8 xl:p-40 grid grid-rows-[40px_1fr_1fr_1fr] xl:grid-cols-2 xl:grid-rows-[40px_1fr_1fr] gap-4 md:gap-6">
       <!-- <Search/> -->
       <div class="col-span-full pr-3 flex bg-block">
         <input
@@ -35,7 +35,7 @@
         </button>
       </div>
       <!-- error -->
-      <div class="w-fit h-10 px-5 pt-2  bg-block" v-if="isError">
+      <div class="w-fit h-10 px-5 pt-2  bg-block" v-if="isError && !loading">
         <p>Кажется, что то пошло не так, попробуйте снова</p>
       </div>
       <City :city="city" :weatherInfo="weatherInfo" v-if="!isError"/>
